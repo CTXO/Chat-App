@@ -16,7 +16,12 @@ class ChatUser(models.Model):
     def sendMessage(self, user, text):
         message = Message.create(self, user, text)
         message.save()
-        print("message sent successfully")
+        print("message sent successfully to " + user.username)
+
+    def addContact(self, user):
+        self.contacts.add(user)
+        self.save()
+        print(user.username + " was added to your contact list")
 
 
 class Message(models.Model):
