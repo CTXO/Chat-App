@@ -20,6 +20,13 @@ class ChatUser(AbstractUser):
         self.save()
         print(user.username + " was added to your contact list")
 
+    def deleteUser(self):
+        self.delete()
+    
+    def deleteContact(self, user):
+        self.contacts.remove(user)
+        self.save()
+
 
 class Message(models.Model):
     sender = models.ForeignKey(ChatUser, on_delete=models.SET_NULL, related_name='sender', null=True)

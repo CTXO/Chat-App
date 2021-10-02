@@ -6,8 +6,9 @@ User = get_user_model()
 
 class SchemaTest(TestCase):
     
-    user = User.objects.create_user('Cartaxo', 'email@email.br', 'mypass', first_name='Romero', last_name='Cartaxo')
+    user = ChatUser.objects.get(pk=1) 
 
+    user.deleteUser()
     def test_1(self):
         print((self.user.username, self.user.password))
 
