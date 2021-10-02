@@ -6,8 +6,12 @@ name = "pypi"
 [packages]
 django = "*"
 mysqlclient = "*"
+djangorestframework = "*"
+markdown = "*"
 
 [dev-packages]
+pylint = "*"
+rope = "*"
 
 [requires]
 python_version = "3.9"

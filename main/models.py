@@ -16,15 +16,19 @@ class ChatUser(AbstractUser):
     def sendMessage(self, user, text):
         m = Message.objects.create(sender=self, receiver=user, text=text)
         m.save()
-        print("message sent successfully to " + user.username)
+        return m
+        #print("message sent successfully to " + user.username)
 
     def addContact(self, user):
         self.contacts.add(user)
         self.save()
-        print(user.username + " was added to your contact list")
+        #print(user.username + " was added to your contact list")
 
-    def deleteUser(self):
-        self.delete()
+    def deleteUser(id):
+        user = ChatUser.objects.get(pk=id)
+        username = user.username
+        user.delete()
+        return username
     
     def deleteContact(self, user):
         self.contacts.remove(user)

@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class SchemaTest(TestCase):
-    
     romero = ChatUser.objects.get(pk=6)
     ashlyn = ChatUser.objects.get(pk=7)
     john = ChatUser.objects.get(pk=8)
