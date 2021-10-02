@@ -6,13 +6,16 @@ class ChatUser(AbstractUser):
     contacts = models.ManyToManyField('self', symmetrical=False)
     messages = models.ManyToManyField('self', through='Message', through_fields=('sender', 'receiver'))
 
+    #TODO: Make email unique;
     @classmethod
     def create(cls, username, email, password):
         user = cls(username=username, email=email, password=password)
+        user.save()
         return user
 
     def sendMessage(self, user, text):
         m = Message.objects.create(sender=self, receiver=user, text=text)
+        m.save()
         print("message sent successfully to " + user.username)
 
     def addContact(self, user):
