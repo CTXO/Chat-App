@@ -1,9 +1,10 @@
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import AbstractUser
 
 class ChatUser(AbstractUser):
     contacts = models.ManyToManyField('self', symmetrical=False)
-    messages = models.ManyToManyField('self', through='Message')
+    messages = models.ManyToManyField('self', through='Message', through_fields=('sender', 'receiver'))
 
     @classmethod
     def create(cls, username, email, password):
@@ -11,8 +12,7 @@ class ChatUser(AbstractUser):
         return user
 
     def sendMessage(self, user, text):
-        message = Message.create(self, user, text)
-        message.save()
+        m = Message.objects.create(sender=self, receiver=user, text=text)
         print("message sent successfully to " + user.username)
 
     def addContact(self, user):
@@ -26,6 +26,12 @@ class ChatUser(AbstractUser):
     def deleteContact(self, user):
         self.contacts.remove(user)
         self.save()
+
+    def list_chat_with(self, user):
+        messagesWithUser = Q(Q(sender=self) & Q(receiver=user)) | Q(Q(sender=user) & Q(receiver=self))
+        chat = Message.objects.all().filter(messagesWithUser)
+        return chat
+        
 
 
 class Message(models.Model):
