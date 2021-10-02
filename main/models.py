@@ -1,10 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-
-class ChatUser(models.Model):
-    username = models.CharField(max_length=12, unique=True)
-    email = models.CharField(max_length=255)
-    password = models.CharField(max_length=20)
+class ChatUser(AbstractUser):
     contacts = models.ManyToManyField('self', symmetrical=False)
     messages = models.ManyToManyField('self', through='Message')
 
