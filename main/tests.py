@@ -22,7 +22,9 @@ class SchemaTest(TestCase):
     #ashlyn.sendMessage(john, "Hey man, where are u????")
     #crenea.sendMessage(romero, "How do I make John stop texting me???")
     #crenea.sendMessage(romero, "I have more things to do")
-    print(romero.list_chat_with(crenea).values('sender', 'text'))
+    print(john.list_chat_with(romero).values('sender', 'text','is_read'))
+    john.visualize_chat(romero)
+    print(john.list_chat_with(romero).values('sender', 'text','is_read'))
     def test_1(self):
         pass    
         

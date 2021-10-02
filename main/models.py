@@ -31,6 +31,12 @@ class ChatUser(AbstractUser):
         messagesWithUser = Q(Q(sender=self) & Q(receiver=user)) | Q(Q(sender=user) & Q(receiver=self))
         chat = Message.objects.all().filter(messagesWithUser)
         return chat
+
+    def visualize_chat(self, user):
+        chat = self.list_chat_with(user)
+        for message in chat:
+            message.is_read=True
+            message.save()
         
 
 
