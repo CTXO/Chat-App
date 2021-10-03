@@ -98,3 +98,7 @@ You can start by creating some accounts and send messages bewtween the accounts.
 - [REST API](https://restfulapi.net/)
 - [MySQL](https://dev.mysql.com/doc/refman/8.0/en/introduction.html)
 - [Entity Relationships](https://www.smartdraw.com/entity-relationship-diagram/)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
