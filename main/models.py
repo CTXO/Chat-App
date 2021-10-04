@@ -44,6 +44,7 @@ class ChatUser(AbstractUser):
         for message in chat:
             message.is_read=True
             message.save()
+    
         
 
 

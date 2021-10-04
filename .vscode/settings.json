@@ -1,3 +1,19 @@
 {
-    "python.pythonPath": "/home/ctxo/.local/share/virtualenvs/chat_backend-BzfTr037/bin/python"
+    "python.pythonPath": "/home/ctxo/.local/share/virtualenvs/chat_backend-BzfTr037/bin/python",
+    "emmet.syntaxProfiles": {
+    
+    },
+    "emmet.preferences": {
+        "folders": [],
+        "settings": {
+        "emmet.includeLanguages": {
+           "javascript": "javascriptreact"
+        }
+     }
+    },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    }
+
+    
 }
