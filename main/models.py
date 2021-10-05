@@ -9,7 +9,8 @@ class ChatUser(AbstractUser):
     #TODO: Make email unique;
     @classmethod
     def create(cls, username, email, password):
-        user = cls(username=username, email=email, password=password)
+        user = cls(username=username, email=email)
+        user.set_password(password)
         user.save()
         return user
 
