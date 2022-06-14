@@ -5,9 +5,12 @@ import { CardList } from "../card_list/card_list"
 import { Card } from "../card/card"
 
 
-export function ContactContainer() {
-    const cards = ["Romero", "Victória", "Carol", "Alegria"].map((name, i) => <Card title={name} 
-                                                                                subtitle="last message" key={i} />)
+export function ContactContainer(props) {
+    const handleClick = function(name) {
+        props.clickUser(name)
+    }
+    const cards = ["Romero", "Victória", "Carol", "Alegria"].map((name, i) => <Card title={name} onClick={() => handleClick(name)}
+                                                                                subtitle="last message" key={i}/>)
     const drawerContent = (
         <CardList>
             {cards}

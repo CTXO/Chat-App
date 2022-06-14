@@ -10,10 +10,17 @@ import { ContactContainer } from './components/drawer/contact_container';
 
 export const drawerWidth = "25%"
 export default function Dashboard () {
+        const [clickedUser, setClickedUser] = useState(null)
+
+        const clickUser = function(userName) {
+            console.log(userName)
+            setClickedUser(userName)
+        }
+
         return (
         <Box sx={{ display: 'flex' }}>
-            <ChatContainer/>
-            <ContactContainer/>
+            <ChatContainer userClicked={clickedUser}/>
+            <ContactContainer clickUser={clickUser}/>
         </Box>
     )
 }
